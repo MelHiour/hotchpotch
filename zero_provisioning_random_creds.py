@@ -1,14 +1,38 @@
+import yaml
 import pexpect
+import random
 import concurrent.futures
 
 devices = [i for i in range(32897, 32947)]
 ids = [i for i in range(1,51)]
+creds_yaml = '''
+usernames:
+    - melhiour
+    - katya
+    - petya
+    - sasha
+    - boris
+    - vasia
+    - oleg
+passwords:
+    - password1
+    - password2
+    - melhiour
+    - iwannabesomebody
+    - SuperSecretPass1
+    - G00D$ecurePa$$password2
+    - WTF300
+    - ILoveMyWife
+'''
+creds = yaml.load(creds_yaml)
+creds_product = list(itertools.product(creds['usernames'], creds['passwords']))
 
 def provision(devices, ids, limit = 50):
     with concurrent.futures.ThreadPoolExecutor(max_workers=limit) as executor:
         executor.map(zero_provisioning, devices, ids)
 
 def zero_provisioning(port, id):
+    loginpass = random.choice(creds_product)
     with pexpect.spawn('telnet 192.168.0.29 {}'.format(port)) as t:
         print('Provisioning R{} via port {}'.format(id, port))
         t.sendline()
@@ -31,7 +55,7 @@ def zero_provisioning(port, id):
         t.expect('[>#]')
         t.sendline('ip address 192.168.30.{} 255.255.255.0'.format(id))
         t.expect('[>#]')
-        t.sendline('username melhiour secret melhiour')
+        t.sendline('username {} priv 15 secret {}'.format(loginpass[0], loginpass[1]))
         t.expect('[>#]')
         t.sendline('enable secret melhiour')
         t.expect('[>#]')
@@ -53,4 +77,3 @@ def zero_provisioning(port, id):
         t.expect('[>#]')
 
 provision(devices, ids)
-    
