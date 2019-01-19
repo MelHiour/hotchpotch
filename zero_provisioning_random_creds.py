@@ -19,6 +19,7 @@ passwords:
     - WTF300
     - ILoveMyWife
 '''
+
 creds = yaml.load(creds_yaml)
 creds_product = list(itertools.product(creds['usernames'], creds['passwords']))
 
