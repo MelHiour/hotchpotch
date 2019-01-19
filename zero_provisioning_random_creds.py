@@ -7,18 +7,11 @@ devices = [i for i in range(32897, 32947)]
 ids = [i for i in range(1,51)]
 creds_yaml = '''
 usernames:
-    - melhiour
+    - misha
     - katya
     - petya
     - sasha
-    - boris
-    - vasia
-    - oleg
 passwords:
-    - password1
-    - password2
-    - melhiour
-    - iwannabesomebody
     - SuperSecretPass1
     - G00D$ecurePa$$password2
     - WTF300
