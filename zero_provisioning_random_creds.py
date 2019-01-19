@@ -72,4 +72,5 @@ def zero_provisioning(port, id):
         t.sendline('wr')
         t.expect('[>#]')
     print('DONE R{} port {} {}:{}'.format(id, port, loginpass[0], loginpass[1]))
+
 provision(devices, ids)
