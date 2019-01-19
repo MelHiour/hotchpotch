@@ -2,6 +2,7 @@ import yaml
 import pexpect
 import random
 import concurrent.futures
+import itertools
 
 devices = [i for i in range(32897, 32947)]
 ids = [i for i in range(1,51)]
@@ -27,7 +28,7 @@ def provision(devices, ids, limit = 50):
 def zero_provisioning(port, id):
     loginpass = random.choice(creds_product)
     with pexpect.spawn('telnet 192.168.0.29 {}'.format(port)) as t:
-        print('Provisioning R{} via port {}'.format(id, port))
+        print('Provisioning R{} via port {} with {} as user and {} as password'.format(id, port, loginpass[0], loginpass[1]))
         t.sendline()
         t.expect('no]:')
         t.sendline('no')
@@ -68,5 +69,5 @@ def zero_provisioning(port, id):
         t.expect('[>#]')
         t.sendline('wr')
         t.expect('[>#]')
-
+    print('DONE R{} port {} {}:{}'.format(id, port, loginpass[0], loginpass[1]))
 provision(devices, ids)
