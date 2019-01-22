@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import time
 import Adafruit_DHT
 import sys
@@ -11,14 +12,19 @@ serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, cascaded=1)
 seg = sevensegment(device)
 
+seg.text = 'LOVECECA'
+time.sleep(2)
+
+seg.device.contrast(16)
+
 while True:
-    for i in range(7):
+    humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, 17)
+    for i in range(8):
         now = datetime.now()
         if i % 2 == 0:
             seg.text = '- ' + now.strftime("%H.%M") + ' -'
         else:
-            seg.text = '- ' + now.strftime("%H%M") + ' -'
+            seg.text = 'o ' + now.strftime("%H%M") + ' o'
         time.sleep(1)
-    humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, 17)
-    seg.text = '{0:0.1f}C {1:0.1f}H'.format(temperature, humidity)
+    seg.text = '{0:0.1f}C{1:0.1f}H'.format(temperature, humidity)
     time.sleep(3)
