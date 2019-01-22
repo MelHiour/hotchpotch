@@ -26,5 +26,5 @@ while True:
         else:
             seg.text = 'o ' + now.strftime("%H%M") + ' o'
         time.sleep(1)
-    seg.text = '{0:0.1f}C{1:0.1f}H'.format(temperature, humidity)
+    seg.text = '{0:4.1f}C{1:4.1f}H'.format(temperature, humidity)
     time.sleep(3)
