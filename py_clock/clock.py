@@ -12,7 +12,7 @@ device = max7219(serial, cascaded=1)
 seg = sevensegment(device)
 
 while True:
-    for i in range(5):
+    for i in range(7):
         now = datetime.now()
         if i % 2 == 0:
             seg.text = '- ' + now.strftime("%H.%M") + ' -'
@@ -21,4 +21,4 @@ while True:
         time.sleep(1)
     humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, 17)
     seg.text = '{0:0.1f}C {1:0.1f}H'.format(temperature, humidity)
-    time.sleep(5)
+    time.sleep(3)
