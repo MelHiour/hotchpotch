@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import time
 import re
-import os
+import sqlite3
 import requests
 import Adafruit_DHT
 from datetime import datetime
@@ -44,11 +44,8 @@ while True:
         logged = False
     else:
         if not logged:
-            filename = '/root/temp-data/'+now.strftime("%d%b%Y")
-            if os.path.exists(filename):
-                append_write = 'a'
-            else:
-                append_write = 'w'
-            with open(filename, append_write) as file:
-                file.write('{} {} {} {}\n'.format(str(now), str(temperature), str(humidity), outside_temp.group(1)))
+            query = 'INSERT into tempdata values (?, ?, ?, ?)'
+            data = (str(now), str(temperature), str(humidity), outside_temp.group(1))
+            with sqlite3.connect('/root/temp-data/temp-data.sb') as connector:
+                connector.execute(query, data)
             logged = True
