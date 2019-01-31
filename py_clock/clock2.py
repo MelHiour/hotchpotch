@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import time
 import re
+import os
 import requests
 import Adafruit_DHT
 from datetime import datetime
@@ -39,11 +40,15 @@ while True:
     seg.text = '{first:>3}T{second}'.format(second=now.strftime("%H.%M"), first=outside_temp.group(1))
     time.sleep(2)
 
-'''
-    if datetime.timetuple(now)[4] == 0:
-        with open('/root/temp-data', 'a') as file:
-            file.write('{} {} {} {}\n'.format(str(now), str(temperature), str(humidity), outside_temp.group(1)))
-        for i in range(60):
-            seg.text = '{:>03} {}'.format(str(i), now.strftime("%H.%M"))
-            time.sleep(1)
-'''
+    if datetime.timetuple(now)[4] != 0:
+        logged = False
+    else:
+        if not logged:
+            filename = '/root/temp-data/'+now.strftime("%d%b%Y")
+            if os.path.exists(filename):
+                append_write = 'a'
+            else:
+                append_write = 'w'
+            with open(filename, append_write) as file:
+                file.write('{} {} {} {}\n'.format(str(now), str(temperature), str(humidity), outside_temp.group(1)))
+            logged = True
