@@ -46,6 +46,6 @@ while True:
         if not logged:
             query = 'INSERT into tempdata values (?, ?, ?, ?)'
             data = (str(now), str(temperature), str(humidity), outside_temp.group(1))
-            with sqlite3.connect('/root/temp-data/temp-data.sb') as connector:
+            with sqlite3.connect('/root/temp-data/temp-data.db') as connector:
                 connector.execute(query, data)
             logged = True
