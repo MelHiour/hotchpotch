@@ -2,6 +2,7 @@
 
 import xmltodict
 import mysql.connector
+from pprint import pprint
 
 '''
 host, user, passwd, database, source_file, table_name
@@ -35,5 +36,6 @@ def db_insert(db_cursor, table_name, values):
 def xml_parser(source_file):
     with open(source_file) as file:
         parsed_xml = xmltodict.parse(file.read())
-        
-#db_insert(mycursor, 'tblCons', values)
+    print(parsed_xml)
+
+xml_parser('confCons.xml')
