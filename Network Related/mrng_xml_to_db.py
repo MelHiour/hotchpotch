@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 
+import xmltodict
 import mysql.connector
+
+'''
+host, user, passwd, database, source_file, table_name
+'''
 
 mydb = mysql.connector.connect(
   host="192.168.0.19",
@@ -27,4 +32,8 @@ def db_insert(db_cursor, table_name, values):
     db_cursor.execute(sql)
     mydb.commit()
 
-db_insert(mycursor, 'tblCons', values)
+def xml_parser(source_file):
+    with open(source_file) as file:
+        parsed_xml = xmltodict.parse(file.read())
+        
+#db_insert(mycursor, 'tblCons', values)
