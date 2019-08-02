@@ -9,11 +9,11 @@ if __name__ == '__main__':
        try:
            sock = socket.socket(socket.AF_INET,
                                 socket.SOCK_STREAM)
-           sock.connect((HOST, PORT))
            print('\nConnected to {}:{}'.format(HOST, PORT))
            print("Type message, enter to send, 'q' to quit")
            msg = input()
            if msg == 'q': break
+           sock.connect((HOST, PORT))
            modules.send_msg(sock, msg)  # Blocks until sent
            print('Sent message: {}'.format(msg))
            msg = modules.recv_msg(sock)  # Block until
