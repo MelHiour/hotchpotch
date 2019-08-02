@@ -17,7 +17,7 @@ def create_listen_socket(host, port):
 def recv_msg(sock):
    """ Wait for data to arrive on the socket, then parse into
    messages using b'\0' as message delimiter """
-   data = bytearray()
+#   data = bytearray()
    msg = ''
    # Repeatedly read 4096 bytes off the socket, storing the bytes
    # in data until we see a delimiter
@@ -26,12 +26,12 @@ def recv_msg(sock):
        if not recvd:
            # Socket has been closed prematurely
            raise ConnectionError()
-       data = data + recvd
+#       data = data + recvd
        if b'\0' in recvd:
            # we know from our protocol rules that we only send
            # one message per connection, so b'\0' will always be
            # the last character
-           msg = data.rstrip(b'\0')
+           msg = recvd.rstrip(b'\0')
    msg = msg.decode('utf-8')
    return msg
 
