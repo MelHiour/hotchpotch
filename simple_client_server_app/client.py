@@ -2,7 +2,7 @@ import sys, socket
 import modules
 
 HOST = sys.argv[-1] if len(sys.argv) > 1 else '127.0.0.1'
-PORT = tincanchat.PORT
+PORT = modules.PORT
 
 if __name__ == '__main__':
    while True:
@@ -16,7 +16,7 @@ if __name__ == '__main__':
            if msg == 'q': break
            modules.send_msg(sock, msg)  # Blocks until sent
            print('Sent message: {}'.format(msg))
-           msg = tincanchat.recv_msg(sock)  # Block until
+           msg = modules.recv_msg(sock)  # Block until
                                  # received complete
            print('Received echo: ' + msg)
        except ConnectionError:

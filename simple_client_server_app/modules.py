@@ -3,7 +3,7 @@
 import socket
 
 HOST = ''
-PORT = 4040
+PORT = 4041
 
 def create_listen_socket(host, port):
     """ Setup the sockets our server will receive connection
@@ -39,7 +39,7 @@ def prep_msg(msg):
    """ Prepare a string to be sent as a message """
    msg += '\0'
    return msg.encode('utf-8')
-   
+
 def send_msg(sock, msg):
    """ Send a string over a socket, preparing it first """
    data = prep_msg(msg)

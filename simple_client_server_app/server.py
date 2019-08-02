@@ -6,10 +6,10 @@ PORT = modules.PORT
 def handle_client(sock, addr):
    """ Receive data from the client via sock and echo it back """
    try:
-       msg = tincanchat.recv_msg(sock)  # Blocks until received
+       msg = modules.recv_msg(sock)  # Blocks until received
                                         # complete message
        print('{}: {}'.format(addr, msg))
-       tincanchat.send_msg(sock, msg)  # Blocks until sent
+       modules.send_msg(sock, msg)  # Blocks until sent
    except (ConnectionError, BrokenPipeError):
        print('Socket error')
    finally:
