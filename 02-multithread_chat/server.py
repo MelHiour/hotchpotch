@@ -4,7 +4,7 @@ import modules
 HOST = modules.HOST
 PORT = modules.PORT
 
-send_queues = {}                                                # Define a dict(send_queues)  
+send_queues = {}                                                # Define a dict(send_queues)
 lock = threading.Lock()                                         # Define a LOCK. Will be used for queues precessing
 
 def handle_client_recv(sock, addr):
@@ -26,7 +26,7 @@ def handle_client_send(sock, q, addr):
    """ Monitor queue for new messages, send them to client as
        they arrive """
    while True:
-       msg = q.get()                                            # Get a message from particular queue
+       msg = q.get()                                            # Get LAST message from queue
        if msg == None: break
        try:
            modules.send_msg(sock, msg)                          # Transmit a message
@@ -36,22 +36,22 @@ def handle_client_send(sock, q, addr):
 
 def broadcast_msg(msg):
    """ Add message to each connected client's send queue """
-   with lock:                                                  # LOCK 
-       for q in send_queues.values():                          # for every queue add a message for transfer
+   with lock:                                                  # LOCK
+       for q in send_queues.values():                          # for every queue (client, actually) add a message for transfer
            q.put(msg)
 
 def handle_disconnect(sock, addr):
    """ Ensure queue is cleaned up and socket closed when a client
        disconnects """
-   fd = sock.fileno()
+   fd = sock.fileno()                                          # Get fd (say, queue id)
    with lock:
        # Get send queue for this client
-       q = send_queues.get(fd, None)                           # Get a queue from message_queues with LOCK
+       q = send_queues.get(fd, None)                           # Get the particular queue from message_queues with LOCK
    # If we find a queue then this disconnect has not yet
    # been handled
    if q:
-       q.put(None)                                             # ?
-       del send_queues[fd]                                     # Delete a queue from dictionary
+       q.put(None)                                             # Put a NONE to queue for some reason
+       del send_queues[fd]                                     # Delete a queue for particular client from dictionary
        addr = sock.getpeername()
        print('Client {} disconnected'.format(addr))
        sock.close()
@@ -64,7 +64,7 @@ if __name__ == '__main__':
         client_sock,addr = listen_sock.accept()
         q = queue.Queue()
         with lock:
-            send_queues[client_sock.fileno()] = q
+            send_queues[client_sock.fileno()] = q              # Add a key-value to send_queues disctionary. See example at the very bottom
             recv_thread = threading.Thread(target=handle_client_recv,
                                               args=[client_sock, addr],
                                               daemon=True)
@@ -75,3 +75,19 @@ if __name__ == '__main__':
             recv_thread.start()
             send_thread.start()
             print('Connection from {}'.format(addr))
+
+'''
+Socket object:
+ print(client_sock)
+ <socket.socket
+    fd=4,
+    family=AddressFamily.AF_INET,
+    type=SocketKind.SOCK_STREAM,
+    proto=0,
+    laddr=('127.0.0.1', 4041),
+    addr=('127.0.0.1', 54823)>
+
+send_queues dict:
+(Pdb) print(send_queues)
+{4: <queue.Queue object at 0x109a0ad50>}
+'''
