@@ -4,16 +4,16 @@ import modules
 HOST = modules.HOST
 PORT = modules.PORT
 
-send_queues = {}
+send_queues = {}                                                  
 lock = threading.Lock()
 
 def handle_client_recv(sock, addr):
    """ Receive messages from client and broadcast them to
        other clients until client disconnects """
-   rest = bytes()
+   rest = bytes()                                               # Define rest because it's used later
    while True:
        try:
-           (msgs, rest) = modules.recv_msgs(sock, rest)
+           (msgs, rest) = modules.recv_msgs(sock, rest)         # list(msgs) and rest iare returned
        except (EOFError, ConnectionError):
            handle_disconnect(sock, addr)
            break
