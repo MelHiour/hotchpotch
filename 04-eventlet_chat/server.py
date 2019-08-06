@@ -54,14 +54,14 @@ def handle_disconnect(sock, addr):
        sock.close()
 
 if __name__ == '__main__':
-    server = eventlet.listen((HOST, PORT))
+    server = eventlet.listen((HOST, PORT))          # not socket function from modules
     addr = server.getsockname()
     print('Listening on {}'.format(addr))
     while True:
         client_sock,addr = server.accept()
         q = queue.Queue()
-        send_queues[client_sock.fileno()] = q
-        eventlet.spawn_n(handle_client_recv,
+        send_queues[client_sock.fileno()] = q       # changed with no LOCK
+        eventlet.spawn_n(handle_client_recv,        # smilar to threads, but actually an nonblocking structures
                         client_sock,
                         addr)
         eventlet.spawn_n(handle_client_send,
