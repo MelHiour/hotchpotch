@@ -57,6 +57,19 @@ def handle_disconnect(sock, addr):
        sock.close()
 
 if __name__ == '__main__':
+    ''' Very lamerish  explanation
+    AFter infinite loop has started the socket get expected for neew connection.
+    1. User A has Connected
+    2. Connection got accepted
+    3. Queue is created and added to the dictionary with Lock
+    4. Recv and Send threads have created and started
+    5. End of round 1
+    6. User B has connected
+    7. Connection got accepted , queue created and added to dict
+    8. Both threads recreated and rerun
+    9. End of round 2
+    10. No clients are about to join. We are stuck at listen_sock.accept() state. But both threads are still runing.
+    '''
     listen_sock = modules.create_listen_socket(HOST, PORT)
     addr = listen_sock.getsockname()
     print('Listening on {}'.format(addr))
