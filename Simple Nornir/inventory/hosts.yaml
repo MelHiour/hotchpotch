@@ -1,0 +1,72 @@
+---
+R1:
+    hostname: 192.168.30.11
+    username: melhiour
+    password: melhiour
+    port: 22
+    platform: cisco_ios
+    groups:
+        - rtrs
+    data:
+        oob_port: 32897
+        type: router
+R2:
+    hostname: 192.168.30.12
+    username: melhiour
+    password: melhiour
+    platform: cisco_ios
+    groups:
+        - rtrs
+    data:
+        oob_port: 32898
+        type: router
+R3:
+    hostname: 192.168.30.13
+    username: melhiour
+    password: melhiour
+    platform: cisco_ios
+    groups:
+        - rtrs
+    data:
+        oob_port: 32899
+        type: router
+SW4:
+    hostname: 192.168.30.14
+    username: melhiour
+    password: melhiour
+    platform: cisco_ios
+    groups:
+        - sws
+    data:
+        oob_port: 32900
+        type: switch
+SW5:
+    hostname: 192.168.30.15
+    username: melhiour
+    password: melhiour
+    platform: cisco_ios
+    groups:
+        - sws
+    data:
+        oob_port: 32901
+        type: switch
+SW6:
+    hostname: 192.168.30.16
+    username: melhiour
+    password: melhiour
+    platform: cisco_ios
+    groups:
+        - sws
+    data:
+        oob_port: 32902
+        type: switch
+SW7:
+    hostname: 192.168.30.17
+    username: melhiour
+    password: melhiour
+    platform: cisco_ios
+    groups:
+        - sws
+    data:
+        oob_port: 32903
+        type: switch

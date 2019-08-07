@@ -1,0 +1,12 @@
+---
+global:
+    data:
+        domain: lab.hi
+
+rtrs:
+    data:
+        name: Routers
+
+sws:
+    data:
+        name: Switches
