@@ -49,7 +49,6 @@ def main():
             print(device['hostname'])
             netmiko_params = {'device_type':'cisco_ios_telnet',
                               'ip': '192.168.0.29',
-
                               'port': device['oob_port']}
             config = cfg_from_template('base-initial.j2', device)
             print(send_cfg_telnet(netmiko_params, config))
