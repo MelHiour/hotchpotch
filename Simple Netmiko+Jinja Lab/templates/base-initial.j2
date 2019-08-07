@@ -1,0 +1,17 @@
+hostname {{hostname}}
+!
+username {{username}} privilege 15 secret {{password}}
+crypto key generate rsa modulus 2048
+ip domain name lab.hi
+no ip domain-lookup
+!
+ip vrf MGMT
+ description Management
+!
+{% block interfaces %} {% endblock %}
+!
+ip route vrf MGMT 0.0.0.0 0.0.0.0 192.168.30.1
+!
+line vty 0 4
+ login local
+ transport input ssh

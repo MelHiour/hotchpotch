@@ -1,0 +1,73 @@
+---
+    - hostname: SW5
+      type: switch
+      oob_port: 32901
+      device_type: cisco_ios
+      ip: 192.168.30.15
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
+    - hostname: SW6
+      type: switch
+      oob_port: 32902
+      device_type: cisco_ios
+      ip: 192.168.30.16
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
+    - hostname: SW7
+      type: switch
+      oob_port: 32903
+      device_type: cisco_ios
+      ip: 192.168.30.17
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
+    - hostname: SW8
+      type: switch
+      oob_port: 32904
+      device_type: cisco_ios
+      ip: 192.168.30.18
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
+    - hostname: R1
+      type: router
+      oob_port: 32897
+      device_type: cisco_ios
+      ip: 192.168.30.11
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
+    - hostname: R2
+      type: router
+      oob_port: 32898
+      device_type: cisco_ios
+      ip: 192.168.30.12
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
+    - hostname: R3
+      type: router
+      oob_port: 32899
+      device_type: cisco_ios
+      ip: 192.168.30.13
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
+    - hostname: R4
+      type: router
+      oob_port: 32900
+      device_type: cisco_ios
+      ip: 192.168.30.14
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
