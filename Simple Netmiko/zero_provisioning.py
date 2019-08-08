@@ -38,6 +38,7 @@ def send_cfg_telnet(netmiko_params, config):
     with ConnectHandler(**netmiko_params) as telnet:
         telnet.enable()
         result = telnet.send_config_set(config)
+        telnet.save_config()
         return result
 
 def main():
