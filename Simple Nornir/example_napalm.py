@@ -17,7 +17,7 @@ for item, value in routers_facts.items():
 
 pprint(routers_facts_dict)
 
-lldp_table_facts = routers.run(task=networking.napalm_get, getters=["get_lldp_neighbors"])
+lldp_table = routers.run(task=networking.napalm_get, getters=["get_lldp_neighbors"])
 
 lldp_table_dict = {}
 for item, value in lldp_table.items():
