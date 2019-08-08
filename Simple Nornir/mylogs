@@ -1286,3 +1286,109 @@ Authentication failed.
 2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
 2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
 2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 10:15:12,620 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interface']} on 7 hosts
+2019-08-08 10:15:12,645 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:15:12,645 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 10:15:12,645 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 10:15:12,645 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 10:15:12,646 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 10:15:12,646 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 10:15:12,646 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 10:15:19,296 - nornir.core.task -    ERROR -      start() - Host 'R2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_interface'
+
+2019-08-08 10:15:19,373 - nornir.core.task -    ERROR -      start() - Host 'SW5': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_interface'
+
+2019-08-08 10:15:19,429 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_interface'
+
+2019-08-08 10:15:19,436 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_interface'
+
+2019-08-08 10:15:19,436 - nornir.core.task -    ERROR -      start() - Host 'SW6': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_interface'
+
+2019-08-08 10:15:19,436 - nornir.core.task -    ERROR -      start() - Host 'SW7': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_interface'
+
+2019-08-08 10:15:19,498 - nornir.core.task -    ERROR -      start() - Host 'SW4': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 60, in napalm_get
+    method = getattr(device, getter)
+AttributeError: 'IOSDriver' object has no attribute 'get_interface'
+
+2019-08-08 10:15:36,375 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interface']} on 7 hosts
+2019-08-08 10:15:43,613 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 10:15:55,079 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 10:15:55,101 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:15:55,101 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 10:15:55,102 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 10:15:55,102 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 10:15:55,102 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 10:15:55,102 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 10:15:55,102 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 10:19:36,994 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 10:19:37,013 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:19:37,013 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 10:19:37,013 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 10:19:37,013 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 10:19:37,014 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 10:19:37,014 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 10:19:37,014 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 10:20:06,575 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 10:20:06,599 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:20:06,599 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 10:20:06,600 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 10:20:06,600 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 10:20:06,600 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 10:20:06,600 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 10:20:06,600 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 10:24:57,005 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 10:24:57,030 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:24:57,031 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 10:24:57,031 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 10:24:57,032 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 10:24:57,032 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 10:24:57,033 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 10:24:57,033 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 10:37:06,699 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 10:37:06,720 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:37:06,720 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 10:37:06,720 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 10:37:06,720 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 10:37:06,720 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 10:37:06,721 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 10:37:06,721 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
