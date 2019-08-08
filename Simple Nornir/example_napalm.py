@@ -6,15 +6,21 @@ from pprint import pprint
 nr = InitNornir(config_file="config.yaml",
 #                logging={"file": "mylogs", "level": "debug"}       # <- uncomment for debug
                 )
+
 routers = nr.filter()
-result = routers.run(task=networking.napalm_get, getters=["facts"])
 
-# Just printing it
-# print_result(result)
+routers_facts = routers.run(task=networking.napalm_get, getters=["facts"])
 
-# Iterate and create a dictionary from print_result
-result_dict = {}
-for item, value in result.items():
-    result_dict[item] = value.result['facts']
+routers_facts_dict = {}
+for item, value in routers_facts.items():
+    routers_facts_dict[item] = value.result['facts']
 
-pprint(result_dict)
+pprint(routers_facts_dict)
+
+lldp_table_facts = routers.run(task=networking.napalm_get, getters=["get_lldp_neighbors"])
+
+lldp_table_dict = {}
+for item, value in lldp_table.items():
+    lldp_table_dict[item] = value.result['facts']
+
+pprint(lldp_table_dict)
