@@ -1,10 +1,7 @@
 ---
 R1:
     hostname: 192.168.30.11
-    username: melhiour
-    password: melhiour
     port: 22
-    platform: cisco_ios
     groups:
         - rtrs
     data:
@@ -12,9 +9,6 @@ R1:
         type: router
 R2:
     hostname: 192.168.30.12
-    username: melhiour
-    password: melhiour
-    platform: cisco_ios
     groups:
         - rtrs
     data:
@@ -22,9 +16,6 @@ R2:
         type: router
 R3:
     hostname: 192.168.30.13
-    username: melhiour
-    password: melhiour
-    platform: cisco_ios
     groups:
         - rtrs
     data:
@@ -32,9 +23,6 @@ R3:
         type: router
 SW4:
     hostname: 192.168.30.14
-    username: melhiour
-    password: melhiour
-    platform: cisco_ios
     groups:
         - sws
     data:
@@ -42,9 +30,6 @@ SW4:
         type: switch
 SW5:
     hostname: 192.168.30.15
-    username: melhiour
-    password: melhiour
-    platform: cisco_ios
     groups:
         - sws
     data:
@@ -52,9 +37,6 @@ SW5:
         type: switch
 SW6:
     hostname: 192.168.30.16
-    username: melhiour
-    password: melhiour
-    platform: cisco_ios
     groups:
         - sws
     data:
@@ -62,9 +44,6 @@ SW6:
         type: switch
 SW7:
     hostname: 192.168.30.17
-    username: melhiour
-    password: melhiour
-    platform: cisco_ios
     groups:
         - sws
     data:

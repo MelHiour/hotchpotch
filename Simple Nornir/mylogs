@@ -343,3 +343,946 @@ netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: c
 2019-08-08 09:08:23,013 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
 2019-08-08 09:08:23,013 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
 2019-08-08 09:08:23,014 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 09:43:49,730 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 09:43:50,475 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 09:43:50,498 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 09:43:50,499 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 09:43:50,499 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 09:43:50,499 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 09:43:50,499 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 09:43:50,500 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 09:43:50,500 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 09:46:08,355 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 09:46:08,377 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 09:46:08,377 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 09:46:08,378 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 09:46:08,378 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 09:46:08,378 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 09:46:08,378 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 09:46:08,378 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 09:46:08,388 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:46:08,390 - nornir.core.task -    ERROR -      start() - Host 'SW4': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:46:08,392 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:46:08,394 - nornir.core.task -    ERROR -      start() - Host 'SW7': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:46:08,396 - nornir.core.task -    ERROR -      start() - Host 'SW5': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:46:08,398 - nornir.core.task -    ERROR -      start() - Host 'R2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:46:08,398 - nornir.core.task -    ERROR -      start() - Host 'SW6': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:46:50,155 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 09:47:02,443 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 09:47:20,427 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 09:47:37,476 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 09:47:51,312 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 09:47:51,427 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 09:47:51,452 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 09:47:51,452 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 09:47:51,452 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 09:47:51,452 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 09:47:51,453 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 09:47:51,453 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 09:47:51,453 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 09:47:51,464 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:47:51,465 - nornir.core.task -    ERROR -      start() - Host 'SW5': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:47:51,468 - nornir.core.task -    ERROR -      start() - Host 'SW6': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:47:51,470 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:47:51,471 - nornir.core.task -    ERROR -      start() - Host 'SW7': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:47:51,473 - nornir.core.task -    ERROR -      start() - Host 'R2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:47:51,474 - nornir.core.task -    ERROR -      start() - Host 'SW4': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:48:03,071 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 09:48:03,211 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 09:48:03,238 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 09:48:03,238 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 09:48:03,239 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 09:48:03,239 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 09:48:03,239 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 09:48:03,239 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 09:48:03,239 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 09:52:08,466 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 09:52:08,487 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 09:52:08,487 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 09:52:08,488 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 09:52:08,488 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 09:52:08,488 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 09:52:08,489 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 09:52:08,489 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 09:52:29,411 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 09:52:29,532 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 09:52:29,555 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 09:52:29,556 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 09:52:29,556 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 09:52:29,556 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 09:52:29,556 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 09:52:29,557 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 09:52:29,557 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 09:52:29,567 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:29,568 - nornir.core.task -    ERROR -      start() - Host 'R2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:29,571 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:29,572 - nornir.core.task -    ERROR -      start() - Host 'SW4': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:29,576 - nornir.core.task -    ERROR -      start() - Host 'SW6': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:29,578 - nornir.core.task -    ERROR -      start() - Host 'SW5': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:29,579 - nornir.core.task -    ERROR -      start() - Host 'SW7': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:40,350 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 09:52:40,464 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 09:52:40,488 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 09:52:40,488 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 09:52:40,488 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 09:52:40,488 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 09:52:40,488 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 09:52:40,488 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 09:52:40,489 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 09:52:40,499 - nornir.core.task -    ERROR -      start() - Host 'SW5': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:40,507 - nornir.core.task -    ERROR -      start() - Host 'R2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:40,510 - nornir.core.task -    ERROR -      start() - Host 'SW7': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:40,512 - nornir.core.task -    ERROR -      start() - Host 'SW6': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:40,513 - nornir.core.task -    ERROR -      start() - Host 'SW4': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:52:40,514 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 09:56:03,663 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 09:56:04,036 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 09:56:04,061 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:02:10,395 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:04:02,214 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:04:38,906 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:08:40,171 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:08:54,173 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:09:11,481 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:09:39,871 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:09:39,874 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 10:09:39,892 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:09:39,893 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 10:09:39,893 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 10:09:39,893 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 10:09:39,893 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 10:09:39,893 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 10:09:39,894 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 10:09:39,902 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 10:09:39,903 - nornir.core.task -    ERROR -      start() - Host 'R2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 10:09:39,905 - nornir.core.task -    ERROR -      start() - Host 'SW7': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 10:09:39,908 - nornir.core.task -    ERROR -      start() - Host 'SW6': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 10:09:39,910 - nornir.core.task -    ERROR -      start() - Host 'SW4': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 10:09:39,911 - nornir.core.task -    ERROR -      start() - Host 'SW5': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 49, in open
+    network_driver = get_network_driver(platform)
+  File "/usr/local/lib/python3.7/site-packages/napalm/base/__init__.py", line 105, in get_network_driver
+    install_name=name
+napalm.base.exceptions.ModuleImportError: Cannot import "cisco_ios". Is the library installed?
+
+2019-08-08 10:10:14,683 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:10:39,058 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:10:58,224 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:10:58,230 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 10:10:58,250 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 10:10:58,250 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 10:10:58,250 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 10:10:58,250 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 10:10:58,251 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 10:10:58,251 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 10:10:58,251 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 10:11:16,509 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 10:11:16,511 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 10:11:16,534 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 10:11:16,534 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 10:11:16,534 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 10:11:16,534 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 10:11:16,534 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 10:11:16,535 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 10:11:16,535 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 10:12:09,253 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 10:12:09,273 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 10:12:09,273 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 10:12:09,273 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 10:12:09,273 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 10:12:09,273 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 10:12:09,274 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 10:12:09,274 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 10:12:20,755 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 7 hosts
+2019-08-08 10:12:20,774 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'napalm_get'
+2019-08-08 10:12:20,774 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'napalm_get'
+2019-08-08 10:12:20,774 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'napalm_get'
+2019-08-08 10:12:20,774 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'napalm_get'
+2019-08-08 10:12:20,774 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'napalm_get'
+2019-08-08 10:12:20,774 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'napalm_get'
+2019-08-08 10:12:20,775 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'napalm_get'
+2019-08-08 10:13:25,933 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 10:13:25,956 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 10:13:25,956 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 10:13:25,956 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 10:13:25,956 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 10:13:25,957 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 10:13:25,957 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 10:13:25,957 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 10:13:28,865 - nornir.core.task -    ERROR -      start() - Host 'SW4': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 446, in connect
+    passphrase,
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 882, in establish_connection
+    raise NetMikoAuthenticationException(msg)
+netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.30.14:22
+Authentication failed.
+
+2019-08-08 10:13:28,865 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 446, in connect
+    passphrase,
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 882, in establish_connection
+    raise NetMikoAuthenticationException(msg)
+netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.30.13:22
+Authentication failed.
+
+2019-08-08 10:13:28,866 - nornir.core.task -    ERROR -      start() - Host 'SW7': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 446, in connect
+    passphrase,
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 882, in establish_connection
+    raise NetMikoAuthenticationException(msg)
+netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.30.17:22
+Authentication failed.
+
+2019-08-08 10:13:28,866 - nornir.core.task -    ERROR -      start() - Host 'R2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 446, in connect
+    passphrase,
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 882, in establish_connection
+    raise NetMikoAuthenticationException(msg)
+netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.30.12:22
+Authentication failed.
+
+2019-08-08 10:13:28,866 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 446, in connect
+    passphrase,
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 882, in establish_connection
+    raise NetMikoAuthenticationException(msg)
+netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.30.11:22
+Authentication failed.
+
+2019-08-08 10:13:28,867 - nornir.core.task -    ERROR -      start() - Host 'SW5': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 446, in connect
+    passphrase,
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 882, in establish_connection
+    raise NetMikoAuthenticationException(msg)
+netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.30.15:22
+Authentication failed.
+
+2019-08-08 10:13:28,867 - nornir.core.task -    ERROR -      start() - Host 'SW6': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 446, in connect
+    passphrase,
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 882, in establish_connection
+    raise NetMikoAuthenticationException(msg)
+netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.30.16:22
+Authentication failed.
+
+2019-08-08 10:13:41,909 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 10:13:41,927 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 10:13:41,928 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
