@@ -21,6 +21,6 @@ lldp_table = routers.run(task=networking.napalm_get, getters=["get_lldp_neighbor
 
 lldp_table_dict = {}
 for item, value in lldp_table.items():
-    lldp_table_dict[item] = value.result['facts']
+    lldp_table_dict[item] = value.result['get_lldp_neighbors']
 
 pprint(lldp_table_dict)
