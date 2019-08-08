@@ -77,3 +77,269 @@ Traceback (most recent call last):
 netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 192.168.30.14:22
 
 2019-08-07 20:22:39,951 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-07 21:49:02,381 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 08:36:40,768 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 08:37:55,821 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 08:40:03,977 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 08:40:03,980 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 08:40:04,006 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 08:40:04,006 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 08:40:04,006 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 08:40:04,006 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 08:40:04,006 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 08:40:04,007 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 08:40:04,007 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
+2019-08-08 08:41:19,072 - nornir.core.task -    ERROR -      start() - Host 'SW7': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.7/site-packages/paramiko/util.py", line 280, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 875, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 192.168.30.17:22
+
+2019-08-08 08:41:19,072 - nornir.core.task -    ERROR -      start() - Host 'R2': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.7/site-packages/paramiko/util.py", line 280, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 875, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 192.168.30.12:22
+
+2019-08-08 08:41:19,073 - nornir.core.task -    ERROR -      start() - Host 'SW5': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.7/site-packages/paramiko/util.py", line 280, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 875, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 192.168.30.15:22
+
+2019-08-08 08:41:19,074 - nornir.core.task -    ERROR -      start() - Host 'R3': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.7/site-packages/paramiko/util.py", line 280, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 875, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 192.168.30.13:22
+
+2019-08-08 08:41:19,074 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.7/site-packages/paramiko/util.py", line 280, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 875, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 192.168.30.11:22
+
+2019-08-08 08:41:19,074 - nornir.core.task -    ERROR -      start() - Host 'SW6': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.7/site-packages/paramiko/util.py", line 280, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 875, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 192.168.30.16:22
+
+2019-08-08 08:41:19,075 - nornir.core.task -    ERROR -      start() - Host 'SW4': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 869, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.7/site-packages/paramiko/util.py", line 280, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.7/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: [Errno 60] Operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/tasks/networking/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection("netmiko", task.nornir.config)
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.7/site-packages/nornir/plugins/connections/netmiko.py", line 58, in open
+    self.connection = ConnectHandler(**parameters)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 243, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 317, in __init__
+    self._open()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 322, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.7/site-packages/netmiko/base_connection.py", line 875, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios 192.168.30.14:22
+
+2019-08-08 09:08:22,992 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'inventory/defaults.yaml' was not found
+2019-08-08 09:08:22,994 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'sh ip int br'} on 7 hosts
+2019-08-08 09:08:23,013 - nornir.core.task -    DEBUG -      start() - Host 'R1': running task 'netmiko_send_command'
+2019-08-08 09:08:23,013 - nornir.core.task -    DEBUG -      start() - Host 'R2': running task 'netmiko_send_command'
+2019-08-08 09:08:23,013 - nornir.core.task -    DEBUG -      start() - Host 'R3': running task 'netmiko_send_command'
+2019-08-08 09:08:23,013 - nornir.core.task -    DEBUG -      start() - Host 'SW4': running task 'netmiko_send_command'
+2019-08-08 09:08:23,013 - nornir.core.task -    DEBUG -      start() - Host 'SW5': running task 'netmiko_send_command'
+2019-08-08 09:08:23,013 - nornir.core.task -    DEBUG -      start() - Host 'SW6': running task 'netmiko_send_command'
+2019-08-08 09:08:23,014 - nornir.core.task -    DEBUG -      start() - Host 'SW7': running task 'netmiko_send_command'
