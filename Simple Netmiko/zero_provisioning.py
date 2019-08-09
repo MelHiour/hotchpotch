@@ -42,8 +42,7 @@ def send_cfg_telnet(netmiko_params, config):
         return result
 
 def main():
-    """ Main function. Parse yaml, for every device prepare a config and send it.
-    """
+    """ Main function. Parse yaml, for every device prepare a config and send it."""
     inventory = parse_yaml('inventory.yaml')
     for device in inventory:
         try:
