@@ -49,3 +49,17 @@ SW7:
     data:
         oob_port: 32903
         type: switch
+SW8:
+    hostname: 192.168.30.18
+    groups:
+        - sws
+    data:
+        oob_port: 32904
+        type: switch
+SW9:
+    hostname: 192.168.30.19
+    groups:
+        - sws
+    data:
+        oob_port: 32906
+        type: switch
