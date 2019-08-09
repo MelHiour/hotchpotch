@@ -35,6 +35,15 @@
       username: melhiour
       password: melhiour
       secret: melhiour
+    - hostname: SW9
+      type: switch
+      oob_port: 32906
+      device_type: cisco_ios
+      ip: 192.168.30.19
+      mask: 255.255.255.0
+      username: melhiour
+      password: melhiour
+      secret: melhiour
     - hostname: R1
       type: router
       oob_port: 32897
