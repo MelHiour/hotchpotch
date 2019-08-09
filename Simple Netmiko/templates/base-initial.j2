@@ -13,6 +13,8 @@ ip vrf MGMT
 interface Ethernet1/1
  no switchport
 {% elif type == 'router' %}
+interface range ethernet 0/0-3
+ no shutdown
 interface Ethernet0/2
  ip vrf forwarding MGMT
 {% endif %}
