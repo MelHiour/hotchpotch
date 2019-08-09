@@ -2,7 +2,7 @@
 {% for id, name in host['vlans'].items() %}
 vlan {{ id }}
 name {{ name }}
-bo shutdown
+no shutdown
 {% endfor%}
 {% for name, address in host['interfaces']['virtual'].items() %}
 interface {{ name }}
