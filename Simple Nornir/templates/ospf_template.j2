@@ -2,11 +2,11 @@
 {% for id, name in host['vlans'].items() %}
 vlan {{ id }}
 name {{ name }}
-no shutdown
 {% endfor%}
 {% for name, address in host['interfaces']['virtual'].items() %}
 interface {{ name }}
 ip address {{ address }}
+no shutdown
 {% endfor%}
 
 {% for name, address in host['interfaces']['physical'].items() %}
@@ -28,6 +28,7 @@ no shutdown
 {% for name, address in host['interfaces']['virtual'].items() %}
 interface {{ name }}
 ip address {{ address }}
+no shutdown
 {% endfor%}
 {% endif %}
 
