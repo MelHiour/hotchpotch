@@ -1,65 +1,150 @@
 ---
 R1:
     hostname: 192.168.30.11
-    port: 22
     groups:
         - rtrs
     data:
         oob_port: 32897
+        services:
+          - ospf
         type: router
+        interfaces:
+          physical:
+            Eth0/0: 10.0.1.1 255.255.255.252
+            Eth0/1: 10.0.1.5 255.255.255.252
 R2:
     hostname: 192.168.30.12
     groups:
         - rtrs
     data:
         oob_port: 32898
+        services:
+          - ospf
         type: router
+        interfaces:
+          physical:
+            Eth0/0: 10.0.2.1 255.255.255.252
+            Eth0/1: 10.0.2.5 255.255.255.252
 R3:
     hostname: 192.168.30.13
     groups:
         - rtrs
     data:
         oob_port: 32899
+        services:
+          - ospf
         type: router
-SW4:
+        interfaces:
+          physical:
+            Eth0/0: 10.0.3.1 255.255.255.252
+            Eth0/1: 10.0.3.5 255.255.255.252
+R4:
     hostname: 192.168.30.14
     groups:
-        - sws
+        - rtrs
     data:
         oob_port: 32900
-        type: switch
+        services:
+          - ospf
+        type: router
+        interfaces:
+          physical:
+            Eth0/0: 10.0.4.1 255.255.255.252
+            Eth0/1: 10.0.4.5 255.255.255.252
 SW5:
     hostname: 192.168.30.15
     groups:
         - sws
     data:
         oob_port: 32901
+        services:
+          - ospf
         type: switch
+        vlans:
+          11: Left
+          14: Right
+        interfaces:
+          virtual:
+            Vlan11: 10.0.3.2 255.255.255.252
+            Vlan14: 10.0.4.6 255.255.255.252
+          physical:
+            Eth0/2: 10.0.0.1 255.255.255.252
+            Eth0/3: 10.0.0.14 255.255.255.252
+          access:
+            Eth0/1: 11
+            Eth0/0: 14
 SW6:
     hostname: 192.168.30.16
     groups:
         - sws
     data:
         oob_port: 32902
+        services:
+          - ospf
         type: switch
+        vlans:
+          11: Left
+          14: Right
+        interfaces:
+          virtual:
+            Vlan11: 10.0.1.6 255.255.255.252
+            Vlan12: 10.0.2.6 255.255.255.252
+          physical:
+            Eth0/2: 10.0.0.2 255.255.255.252
+            Eth0/3: 10.0.0.5 255.255.255.252
+          access:
+            Eth0/1: 11
+            Eth0/0: 12
 SW7:
     hostname: 192.168.30.17
     groups:
         - sws
     data:
         oob_port: 32903
+        services:
+          - ospf
         type: switch
+        vlans:
+          13: Left
+          14: Right
+        interfaces:
+          virtual:
+            Vlan13: 10.0.3.2 255.255.255.252
+            Vlan14: 10.0.4.6 255.255.255.252
+          physical:
+            Eth0/2: 10.0.0.13 255.255.255.252
+            Eth0/3: 10.0.0.10 255.255.255.252
+          access:
+            Eth0/1: 13
+            Eth0/0: 14
 SW8:
     hostname: 192.168.30.18
     groups:
         - sws
     data:
         oob_port: 32904
+        services:
+          - ospf
         type: switch
+        vlans:
+          13: Left
+          14: Right
+        interfaces:
+          virtual:
+            Vlan12: 10.0.2.6 255.255.255.252
+            Vlan13: 10.0.3.6 255.255.255.252
+          physical:
+            Eth0/2: 10.0.0.9 255.255.255.252
+            Eth0/3: 10.0.0.6 255.255.255.252
+          access:
+            Eth0/1: 13
+            Eth0/0: 12
 SW9:
     hostname: 192.168.30.19
     groups:
         - sws
     data:
         oob_port: 32906
+        services:
+          - test
         type: switch

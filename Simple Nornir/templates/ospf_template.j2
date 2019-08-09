@@ -1,0 +1,43 @@
+{% if host['type'] == 'switch' %}
+{% for id, name in host['vlans'].items() %}
+vlan {{ id }}
+name {{ name }}
+bo shutdown
+{% endfor%}
+{% for name, address in host['interfaces']['virtual'].items() %}
+interface {{ name }}
+ip address {{ address }}
+{% endfor%}
+
+{% for name, address in host['interfaces']['physical'].items() %}
+interface {{ name }}
+no switchport
+no shutdown
+ip address {{ address }}
+{% endfor%}
+
+{% for name, vlan in host['interfaces']['access'].items() %}
+interface {{ name }}
+switchport mode access
+switchport access vlan {{ vlan }}
+no shutdown
+{% endfor%}
+
+{% elif host['type'] == 'router' %}
+{% if host['interfaces']['virtual'] is defined %}
+{% for name, address in host['interfaces']['virtual'].items() %}
+interface {{ name }}
+ip address {{ address }}
+{% endfor%}
+{% endif %}
+
+{% for name, address in host['interfaces']['physical'].items() %}
+interface {{ name }}
+no shutdown
+ip address {{ address }}
+{% endfor%}
+{% endif %}
+
+router ospf 110
+router-id {{ host['hostname'] }}
+network 10.0.0.0 255.255.255.0 area 0
