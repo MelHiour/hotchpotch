@@ -1,0 +1,598 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+    <data>
+        <native xmlns="http://cisco.com/ns/yang/ned/ios">
+            <device-model-version>
+                <major>2</major>
+                <minor>1</minor>
+                <bug-fix>0</bug-fix>
+            </device-model-version>
+            <version>16.3</version>
+            <boot-start-marker />
+            <boot-end-marker />
+            <service>
+                <timestamps>
+                    <debug>
+                        <datetime>
+                            <msec />
+                        </datetime>
+                    </debug>
+                    <log>
+                        <datetime>
+                            <msec />
+                        </datetime>
+                    </log>
+                </timestamps>
+            </service>
+            <platform>
+                <console>
+                    <output>serial</output>
+                </console>
+            </platform>
+            <hostname>R12</hostname>
+            <username>
+                <name>cisco</name>
+                <privilege>15</privilege>
+                <password>
+                    <encryption>0</encryption>
+                    <password>cisco</password>
+                </password>
+            </username>
+            <username>
+                <name>melhiour</name>
+                <privilege>15</privilege>
+                <secret>
+                    <encryption>5</encryption>
+                    <secret>$1$nYBN$OawlFlJm/82CYnhzO/FwE/</secret>
+                </secret>
+            </username>
+            <ip>
+                <domain>
+                    <name>lab.hi</name>
+                </domain>
+                <forward-protocol>
+                    <protocol>nd</protocol>
+                </forward-protocol>
+                <http>
+                    <server>false</server>
+                    <secure-server>false</secure-server>
+                </http>
+                <route>
+                    <ip-route-interface-forwarding-list>
+                        <prefix>0.0.0.0</prefix>
+                        <mask>0.0.0.0</mask>
+                        <fwd-list>
+                            <fwd>192.168.30.1</fwd>
+                        </fwd-list>
+                    </ip-route-interface-forwarding-list>
+                </route>
+                <access-list>
+                    <extended>
+                        <name>CISCO-CWA-URL-REDIRECT-ACL</name>
+                        <access-list-seq-rule>
+                            <sequence>100</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <dst-any />
+                                <dst-eq>domain</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>101</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>tcp</protocol>
+                                <any />
+                                <dst-any />
+                                <dst-eq>domain</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>102</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <src-eq>bootps</src-eq>
+                                <dst-any />
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>103</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <dst-any />
+                                <dst-eq>bootpc</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>104</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <src-eq>bootpc</src-eq>
+                                <dst-any />
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>105</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>tcp</protocol>
+                                <any />
+                                <dst-any />
+                                <dst-eq>www</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                    </extended>
+                    <extended>
+                        <name>IP-Adm-V4-Int-ACL-global</name>
+                    </extended>
+                    <extended>
+                        <name>implicit_deny</name>
+                        <access-list-seq-rule>
+                            <sequence>10</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>ip</protocol>
+                                <any />
+                                <dst-any />
+                            </ace-rule>
+                        </access-list-seq-rule>
+                    </extended>
+                    <extended>
+                        <name>preauth_v4</name>
+                        <access-list-seq-rule>
+                            <sequence>10</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <dst-any />
+                                <dst-eq>domain</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>20</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>tcp</protocol>
+                                <any />
+                                <dst-any />
+                                <dst-eq>domain</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>30</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <src-eq>bootps</src-eq>
+                                <dst-any />
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>40</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <dst-any />
+                                <dst-eq>bootpc</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>50</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <src-eq>bootpc</src-eq>
+                                <dst-any />
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>60</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>ip</protocol>
+                                <any />
+                                <dst-any />
+                            </ace-rule>
+                        </access-list-seq-rule>
+                    </extended>
+                </access-list>
+            </ip>
+            <ipv6>
+                <access-list>
+                    <named-acl>
+                        <name>implicit_deny_v6</name>
+                        <access-list-seq-rule>
+                            <sequence>10</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>ipv6</protocol>
+                                <any />
+                                <destination-any />
+                            </ace-rule>
+                        </access-list-seq-rule>
+                    </named-acl>
+                    <named-acl>
+                        <name>preauth_v6</name>
+                        <access-list-seq-rule>
+                            <sequence>10</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <destination-any />
+                                <dst-eq>domain</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>20</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>tcp</protocol>
+                                <any />
+                                <destination-any />
+                                <dst-eq>domain</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>30</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>icmp</protocol>
+                                <any />
+                                <destination-any />
+                                <named-msg-type>nd-ns</named-msg-type>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>40</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>icmp</protocol>
+                                <any />
+                                <destination-any />
+                                <named-msg-type>nd-na</named-msg-type>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>50</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>icmp</protocol>
+                                <any />
+                                <destination-any />
+                                <named-msg-type>router-solicitation</named-msg-type>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>60</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>icmp</protocol>
+                                <any />
+                                <destination-any />
+                                <named-msg-type>router-advertisement</named-msg-type>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>70</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>icmp</protocol>
+                                <any />
+                                <destination-any />
+                                <named-msg-type>redirect</named-msg-type>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>80</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <src-eq>547</src-eq>
+                                <destination-any />
+                                <dst-eq>546</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>90</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>udp</protocol>
+                                <any />
+                                <src-eq>546</src-eq>
+                                <destination-any />
+                                <dst-eq>547</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
+                        <access-list-seq-rule>
+                            <sequence>100</sequence>
+                            <ace-rule>
+                                <action>deny</action>
+                                <protocol>ipv6</protocol>
+                                <any />
+                                <destination-any />
+                            </ace-rule>
+                        </access-list-seq-rule>
+                    </named-acl>
+                </access-list>
+            </ipv6>
+            <interface>
+                <GigabitEthernet>
+                    <name>1</name>
+                    <negotiation>
+                        <auto>true</auto>
+                    </negotiation>
+                    <ip>
+                        <address>
+                            <primary>
+                                <address>192.168.30.22</address>
+                                <mask>255.255.255.0</mask>
+                            </primary>
+                        </address>
+                    </ip>
+                    <mop>
+                        <enabled>false</enabled>
+                    </mop>
+                </GigabitEthernet>
+                <GigabitEthernet>
+                    <name>2</name>
+                    <negotiation>
+                        <auto>true</auto>
+                    </negotiation>
+                    <ip>
+                        <no-address>
+                            <address>false</address>
+                        </no-address>
+                    </ip>
+                    <mop>
+                        <enabled>false</enabled>
+                    </mop>
+                    <shutdown />
+                </GigabitEthernet>
+                <GigabitEthernet>
+                    <name>3</name>
+                    <negotiation>
+                        <auto>true</auto>
+                    </negotiation>
+                    <ip>
+                        <no-address>
+                            <address>false</address>
+                        </no-address>
+                    </ip>
+                    <mop>
+                        <enabled>false</enabled>
+                    </mop>
+                    <shutdown />
+                </GigabitEthernet>
+                <GigabitEthernet>
+                    <name>4</name>
+                    <negotiation>
+                        <auto>true</auto>
+                    </negotiation>
+                    <ip>
+                        <no-address>
+                            <address>false</address>
+                        </no-address>
+                    </ip>
+                    <mop>
+                        <enabled>false</enabled>
+                    </mop>
+                    <shutdown />
+                </GigabitEthernet>
+            </interface>
+            <diagnostic>
+                <bootup>
+                    <level>minimal</level>
+                </bootup>
+            </diagnostic>
+            <control-plane></control-plane>
+            <line>
+                <console>
+                    <first>0</first>
+                    <stopbits>1</stopbits>
+                </console>
+                <vty>
+                    <first>0</first>
+                    <last>4</last>
+                    <login>
+                        <local />
+                    </login>
+                    <transport>
+                        <input>
+                            <input>all</input>
+                        </input>
+                    </transport>
+                </vty>
+                <vty>
+                    <first>5</first>
+                    <last>98</last>
+                    <login>
+                        <local />
+                    </login>
+                    <transport>
+                        <input>
+                            <input>all</input>
+                        </input>
+                    </transport>
+                </vty>
+            </line>
+            <multilink>
+                <bundle-name>authenticated</bundle-name>
+            </multilink>
+            <redundancy></redundancy>
+            <spanning-tree>
+                <extend>
+                    <system-id />
+                </extend>
+            </spanning-tree>
+            <subscriber>
+                <templating />
+            </subscriber>
+            <crypto>
+                <pki>
+                    <certificate>
+                        <chain>
+                            <name>TP-self-signed-1007677159</name>
+                            <certificate>
+                                <serial>01</serial>
+                                <certtype>self-signed</certtype>
+                            </certificate>
+                            <certificate>
+                                <serial>quit</serial>
+                            </certificate>
+                        </chain>
+                    </certificate>
+                    <trustpoint>
+                        <id>TP-self-signed-1007677159</id>
+                        <enrollment>
+                            <selfsigned />
+                        </enrollment>
+                        <revocation-check>none</revocation-check>
+                        <rsakeypair>TP-self-signed-1007677159</rsakeypair>
+                        <subject-name>cn=IOS-Self-Signed-Certificate-1007677159</subject-name>
+                    </trustpoint>
+                </pki>
+            </crypto>
+            <virtual-service>
+                <name>csr_mgmt</name>
+            </virtual-service>
+            <license>
+                <udi>
+                    <pid>CSR1000V</pid>
+                    <sn>9704J20CDEG</sn>
+                </udi>
+            </license>
+        </native>
+        <netconf-yang xmlns="http://cisco.com/yang/cisco-self-mgmt">
+            <cisco-ia xmlns="http://cisco.com/yang/cisco-ia">
+                <auto-sync>without-defaults</auto-sync>
+                <init-sync>without-defaults</init-sync>
+                <intelligent-sync>false</intelligent-sync>
+                <snmp-trap-control>
+                    <global-forwarding>true</global-forwarding>
+                </snmp-trap-control>
+                <message-diag-level>0</message-diag-level>
+                <max-diag-messages-saved>30</max-diag-messages-saved>
+                <post-sync-acl-process>true</post-sync-acl-process>
+                <config-change-delay>0</config-change-delay>
+                <process-missing-prc>true</process-missing-prc>
+                <preserve-paths-enabled>false</preserve-paths-enabled>
+                <logging>
+                    <confd-log-level>error</confd-log-level>
+                    <ciaauthd-log-level>error</ciaauthd-log-level>
+                    <nes-log-level>error</nes-log-level>
+                    <onep-log-level>error</onep-log-level>
+                    <odm-log-level>error</odm-log-level>
+                    <sync-log-level>error</sync-log-level>
+                </logging>
+                <blocking>
+                    <cli-blocking-enabled>false</cli-blocking-enabled>
+                    <confd-cfg-blocking-enabled>true</confd-cfg-blocking-enabled>
+                </blocking>
+            </cisco-ia>
+            <cisco-odm xmlns="http://cisco.com/yang/cisco-odm">
+                <polling-enable>false</polling-enable>
+                <on-demand-default-time>30000</on-demand-default-time>
+                <on-demand-enable>false</on-demand-enable>
+            </cisco-odm>
+        </netconf-yang>
+        <SNMPv2-MIB xmlns="http://tail-f.com/ns/mibs/SNMPv2-MIB/200210160000Z">
+            <system>
+                <sysContact></sysContact>
+                <sysName></sysName>
+                <sysLocation></sysLocation>
+            </system>
+            <snmp>
+                <snmpEnableAuthenTraps>disabled</snmpEnableAuthenTraps>
+            </snmp>
+        </SNMPv2-MIB>
+        <pseudowire-config xmlns="urn:cisco:params:xml:ns:yang:pw">
+            <global>
+                <pw-grouping>false</pw-grouping>
+            </global>
+        </pseudowire-config>
+        <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+            <interface>
+                <name>GigabitEthernet1</name>
+                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                <enabled>true</enabled>
+                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+                    <address>
+                        <ip>192.168.30.22</ip>
+                        <netmask>255.255.255.0</netmask>
+                    </address>
+                </ipv4>
+                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
+            </interface>
+            <interface>
+                <name>GigabitEthernet2</name>
+                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                <enabled>false</enabled>
+                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv4>
+                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
+            </interface>
+            <interface>
+                <name>GigabitEthernet3</name>
+                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                <enabled>false</enabled>
+                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv4>
+                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
+            </interface>
+            <interface>
+                <name>GigabitEthernet4</name>
+                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                <enabled>false</enabled>
+                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv4>
+                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
+            </interface>
+        </interfaces>
+        <routing xmlns="urn:ietf:params:xml:ns:yang:ietf-routing">
+            <routing-instance>
+                <name>default</name>
+                <description>default-vrf [read-only]</description>
+                <interfaces></interfaces>
+                <routing-protocols>
+                    <routing-protocol>
+                        <type>static</type>
+                        <name>1</name>
+                        <static-routes>
+                            <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ipv4-unicast-routing">
+                                <route>
+                                    <destination-prefix>0.0.0.0/0</destination-prefix>
+                                    <next-hop>
+                                        <next-hop-address>192.168.30.1</next-hop-address>
+                                    </next-hop>
+                                </route>
+                            </ipv4>
+                        </static-routes>
+                    </routing-protocol>
+                </routing-protocols>
+            </routing-instance>
+        </routing>
+        <mpls-ldp xmlns="urn:ietf:params:xml:ns:yang:mpls-ldp">
+            <mpls-ldp-config>
+                <global-cfg>
+                    <session>
+                        <backoff-init>15</backoff-init>
+                        <backoff-max>15</backoff-max>
+                    </session>
+                </global-cfg>
+                <session>
+                    <backoff>15</backoff>
+                </session>
+            </mpls-ldp-config>
+        </mpls-ldp>
+    </data>
+</rpc-reply>]

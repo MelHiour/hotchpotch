@@ -1,0 +1,151 @@
+# Yang models
+https://github.com/YangModels/yang
+
+# Useful tool for models review
+pyang -f tree ietf-interfaces.yang
+
+# Go wild
+ssh -s cisco1@172.16.167.175 -p 830 netconf
+
+# Initial HELLO
+<?xml version="1.0" encoding="utf-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>]]>]]>
+
+# Get show RUN
+<?xml version="1.0" encoding="utf-8"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+<get-config>
+<source>
+<running/>
+</source>
+</get-config>
+</rpc>]]>]]>
+
+# Change HOSTNAME
+<?xml version="1.0"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+<edit-config>
+<target>
+<running/>
+</target>
+<config>
+<native xmlns="http://cisco.com/ns/yang/ned/ios">
+<hostname>R12-YANG</hostname>
+</native>
+</config>
+</edit-config>
+</rpc>]]>]]>
+
+# Create new IP interface (via ietf-interface)
+<?xml version="1.0"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+<edit-config>
+<target>
+<running/>
+</target>
+<config>
+        <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+        <interface>
+            <name>GigabitEthernet2</name>
+            <description>YANG TEST</description>
+            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+            <enabled>false</enabled>
+            <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+                <address>
+                    <ip>10.10.10.10</ip>
+                    <netmask>255.255.255.0</netmask>
+                </address>
+            </ipv4>
+          </interface>
+          </interfaces>
+</config>
+</edit-config>
+</rpc>]]>]]>
+
+# Change hostname and create an interface (via ietf). Raise a mop error
+<?xml version="1.0"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+<edit-config>
+  <target>
+    <running/>
+  </target>
+  <config>
+    <native xmlns="http://cisco.com/ns/yang/ned/ios">
+      <hostname>R12-YANG</hostname>
+    </native>
+    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+      <interface>
+        <name>GigabitEthernet2</name>
+        <description>YANG TEST</description>
+        <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+        <enabled>false</enabled>
+        <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+          <address>
+              <ip>10.10.10.10</ip>
+              <netmask>255.255.255.0</netmask>
+          </address>
+        </ipv4>
+      </interface>
+    </interfaces>
+  </config>
+</edit-config>
+</rpc>]]>]]>
+
+# Replace vrfs.
+<?xml version="1.0"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+<edit-config>
+  <target>
+    <running/>
+  </target>
+  <config>
+  <native xmlns="http://cisco.com/ns/yang/ned/ios">
+    <vrf operation="replace">
+      <definition>
+        <name>TEST</name>
+        <address-family>
+          <ipv4 />
+          <ipv6 />
+        </address-family>
+      </definition>
+    </vrf>
+  </native>
+  </config>
+</edit-config>
+</rpc>]]>]]>
+
+# Merge VRF configs. Change desctiption on TEST and add TEST2
+<?xml version="1.0"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+<edit-config>
+  <target>
+    <running/>
+  </target>
+  <config>
+  <native xmlns="http://cisco.com/ns/yang/ned/ios">
+    <vrf operation="merge">
+      <definition>
+        <name>TEST</name>
+        <description>First vrf</description>
+        <address-family>
+          <ipv4 />
+          <ipv6 />
+        </address-family>
+      </definition>
+      <definition>
+        <name>TEST2</name>
+        <description>Second vrf</description>
+        <address-family>
+          <ipv4 />
+          <ipv6 />
+        </address-family>
+      </definition>
+    </vrf>
+  </native>
+  </config>
+</edit-config>
+</rpc>]]>]]>
