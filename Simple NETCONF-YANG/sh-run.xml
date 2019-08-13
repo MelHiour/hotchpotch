@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
     <data>
         <native xmlns="http://cisco.com/ns/yang/ned/ios">
@@ -28,7 +29,7 @@
                     <output>serial</output>
                 </console>
             </platform>
-            <hostname>R12</hostname>
+            <hostname>R12-YANG</hostname>
             <username>
                 <name>cisco</name>
                 <privilege>15</privilege>
@@ -45,6 +46,15 @@
                     <secret>$1$nYBN$OawlFlJm/82CYnhzO/FwE/</secret>
                 </secret>
             </username>
+            <vrf>
+                <definition>
+                    <name>TEST</name>
+                    <address-family>
+                        <ipv4></ipv4>
+                        <ipv6></ipv6>
+                    </address-family>
+                </definition>
+            </vrf>
             <ip>
                 <domain>
                     <name>lab.hi</name>
@@ -54,7 +64,7 @@
                 </forward-protocol>
                 <http>
                     <server>false</server>
-                    <secure-server>false</secure-server>
+                    <secure-server>true</secure-server>
                 </http>
                 <route>
                     <ip-route-interface-forwarding-list>
@@ -131,6 +141,16 @@
                     </extended>
                     <extended>
                         <name>IP-Adm-V4-Int-ACL-global</name>
+                        <access-list-seq-rule>
+                            <sequence>10</sequence>
+                            <ace-rule>
+                                <action>permit</action>
+                                <protocol>tcp</protocol>
+                                <any />
+                                <dst-any />
+                                <dst-eq>443</dst-eq>
+                            </ace-rule>
+                        </access-list-seq-rule>
                     </extended>
                     <extended>
                         <name>implicit_deny</name>
@@ -351,10 +371,14 @@
                     <negotiation>
                         <auto>true</auto>
                     </negotiation>
+                    <description>YANG TEST</description>
                     <ip>
-                        <no-address>
-                            <address>false</address>
-                        </no-address>
+                        <address>
+                            <primary>
+                                <address>10.10.10.10</address>
+                                <mask>255.255.255.0</mask>
+                            </primary>
+                        </address>
                     </ip>
                     <mop>
                         <enabled>false</enabled>
@@ -391,6 +415,18 @@
                     </mop>
                     <shutdown />
                 </GigabitEthernet>
+                <Loopback>
+                    <name>0</name>
+                    <description>Loopback</description>
+                    <ip>
+                        <address>
+                            <primary>
+                                <address>10.0.0.1</address>
+                                <mask>255.255.255.0</mask>
+                            </primary>
+                        </address>
+                    </ip>
+                </Loopback>
             </interface>
             <diagnostic>
                 <bootup>
@@ -538,9 +574,15 @@
             </interface>
             <interface>
                 <name>GigabitEthernet2</name>
+                <description>YANG TEST</description>
                 <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
                 <enabled>false</enabled>
-                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv4>
+                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+                    <address>
+                        <ip>10.10.10.10</ip>
+                        <netmask>255.255.255.0</netmask>
+                    </address>
+                </ipv4>
                 <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
             </interface>
             <interface>
@@ -557,8 +599,31 @@
                 <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv4>
                 <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
             </interface>
+            <interface>
+                <name>Loopback0</name>
+                <description>Loopback</description>
+                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+                <enabled>true</enabled>
+                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+                    <address>
+                        <ip>10.0.0.1</ip>
+                        <netmask>255.255.255.0</netmask>
+                    </address>
+                </ipv4>
+                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
+            </interface>
         </interfaces>
         <routing xmlns="urn:ietf:params:xml:ns:yang:ietf-routing">
+            <routing-instance>
+                <name>TEST</name>
+                <interfaces></interfaces>
+                <routing-protocols>
+                    <routing-protocol>
+                        <type>static</type>
+                        <name>1</name>
+                    </routing-protocol>
+                </routing-protocols>
+            </routing-instance>
             <routing-instance>
                 <name>default</name>
                 <description>default-vrf [read-only]</description>

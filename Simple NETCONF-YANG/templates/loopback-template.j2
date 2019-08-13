@@ -1,0 +1,20 @@
+<config>
+  <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+      {% for loopback in loopbacks %}
+    <interface>
+      <name>Loopback{{ loopback.id }}</name>
+      {% if loopback.description is defined %}
+      <description>{{ loopback.description }}</description>
+      {% endif %}
+      <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+      <enabled>true</enabled>
+      <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+          <address>
+              <ip>{{ loopback.address }}</ip>
+              <netmask>{{ loopback.netmask }}</netmask>
+          </address>
+      </ipv4>
+    </interface>
+      {% endfor %}
+  </interfaces>
+</config>

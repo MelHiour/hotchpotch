@@ -48,20 +48,34 @@ ssh -s cisco1@172.16.167.175 -p 830 netconf
 <running/>
 </target>
 <config>
-        <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-        <interface>
-            <name>GigabitEthernet2</name>
-            <description>YANG TEST</description>
-            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
-            <enabled>false</enabled>
-            <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
-                <address>
-                    <ip>10.10.10.10</ip>
-                    <netmask>255.255.255.0</netmask>
-                </address>
-            </ipv4>
-          </interface>
-          </interfaces>
+  <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+<interface>
+    <name>Loopback0</name>
+    <description>Loopback1</description>
+    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+    <enabled>true</enabled>
+    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+        <address>
+            <ip>10.0.0.1</ip>
+            <netmask>255.255.255.0</netmask>
+        </address>
+    </ipv4>
+    <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
+</interface>
+<interface>
+    <name>Loopback1</name>
+    <description>Loopback1</description>
+    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+    <enabled>true</enabled>
+    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+        <address>
+            <ip>10.0.0.2</ip>
+            <netmask>255.255.255.0</netmask>
+        </address>
+    </ipv4>
+    <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"></ipv6>
+</interface>
+</interfaces>
 </config>
 </edit-config>
 </rpc>]]>]]>
