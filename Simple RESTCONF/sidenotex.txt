@@ -1,0 +1,8 @@
+pip3 install pyangbind
+
+export PYBINDPLUGIN=`/usr/bin/env python3 -c \
+'import pyangbind; import os; print ("{}/plugin".format(os.path.dirname(pyangbind.__file__)))'`
+echo $PYBINDPLUGIN
+
+pyang --plugindir $PYBINDPLUGIN -f pybind --ignore-errors -o cisco-ned.py ned.yang tailf-* ietf-*
+pyang --plugindir $PYBINDPLUGIN -f pybind -o ietf_ip_binding.py ietf-ip.yang ietf-interfaces.yang ietf-inet-types.yang ietf-inet-types.yang

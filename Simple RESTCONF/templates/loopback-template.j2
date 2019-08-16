@@ -1,0 +1,19 @@
+{
+"interface": [
+     {
+    "name": "Loopback{{ id }}",
+    "description": "{{ description }}",
+    "type": "iana-if-type:softwareLoopback",
+    "enabled": true,
+    "ietf-ip:ipv4": {
+      "address": [
+        {
+          "ip": "{{ address }}",
+          "netmask": "{{ netmask }}"
+        }
+      ]
+    },
+    "ietf-ip:ipv6": {}
+  }
+]
+}
