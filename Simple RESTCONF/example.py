@@ -1,5 +1,6 @@
 import requests
 import urllib3
+import json
 from jinja2 import Environment, FileSystemLoader
 from pprint import pprint
 
@@ -26,6 +27,7 @@ CONFIG_DATA = {
 ]
 }
 
+# Disable SSL validation warning in requests
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def config(connection, method, uri, data = False):
@@ -56,19 +58,44 @@ def cfg_from_template(template_file, params, template_dir='templates'):
     env = Environment(loader=FileSystemLoader(template_dir), trim_blocks=True, lstrip_blocks=True)
     template = env.get_template(template_file)
     return template.render(params)
+spacer = '+' * 100
 
+# Generate a Loopback json configuration using template. Then pass it to devices with a for loop.
+print(spacer)
 for interface in CONFIG_DATA['interfaces']:
+    print(f'*** Creating a configuration for interface Loopback{interface["id"]}')
     data = cfg_from_template('loopback-template.j2', interface)
     print(data)
+    print('*** Send generated configuration to device using "restconf/api/config/interfaces/" and POST method')
     post_result = config(CONNECTION, "post", 'restconf/api/config/interfaces/', data=data)
-    print(post_result.status_code, post_result.text)
+    print(f'*** Result code: {post_result.status_code} for Loopback{interface["id"]}')
+print(spacer)
 
+# Get configuration from device. We should see a couple of newly created loopback interfaces.
+print(spacer)
+print('*** Get interface information from device using "restconf/api/config/interfaces/" and GET method')
 get_result = config(CONNECTION, 'get', 'restconf/api/config/interfaces/')
-print(get_result.text)
+print(f'*** The result text is:{get_result.text}')
+print(spacer)
 
+# Remove newly created loopbacks
+print(spacer)
 for interface in CONFIG_DATA['interfaces']:
+    print('*** Removing Loopbacks with "restconf/api/config/interfaces/interface/LoopbackX" and DEL method')
     del_result = config(CONNECTION, 'del', 'restconf/api/config/interfaces/interface/Loopback{}'.format(interface['id']))
-    print(del_result.status_code)
+    print(f'*** Status code {del_result.status_code} for Loopback{interface["id"]}')
+print(spacer)
 
+# Get interfaces again
+print(spacer)
+print('Get interfaces from the device again')
 get_result = config(CONNECTION, 'get', 'restconf/api/config/interfaces/')
-print(get_result.text)
+print(f'*** The result text is:{get_result.text}')
+print(spacer)
+
+# Json can be easily converted to native Python objects.
+print(spacer)
+converted_json = json.loads(get_result.text)
+interface_list = [interface['name'] for interface in converted_json['ietf-interfaces:interfaces']['interface']]
+print(f'*** Now you have only the following interfaces{interface_list}')
+print(spacer)
