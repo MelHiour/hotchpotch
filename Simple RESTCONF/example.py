@@ -1,4 +1,5 @@
 import requests
+import urllib3
 from jinja2 import Environment, FileSystemLoader
 from pprint import pprint
 
@@ -25,6 +26,8 @@ CONFIG_DATA = {
 ]
 }
 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 def config(connection, method, uri, data = False):
     url = 'https://{}/{}'.format(connection['host'], uri)
     headers = {'accept': 'application/vnd.yang.data+json', 'Content-Type': 'application/vnd.yang.data+json'}
@@ -34,8 +37,10 @@ def config(connection, method, uri, data = False):
         result = requests.patch(url, auth=(connection['username'], connection['password']), headers=headers, data=data, verify=False)
     elif method == 'del':
         result = requests.delete(url, auth=(connection['username'], connection['password']), headers=headers, verify=False)
+    elif method == 'get':
+        result = requests.get(url, auth=(connection['username'], connection['password']), headers=headers, verify=False)
     else:
-        print('Please specify the method [post, path, del]')
+        print('Please specify the method [post, path, del, get]')
     return result
 
 
@@ -52,12 +57,18 @@ def cfg_from_template(template_file, params, template_dir='templates'):
     template = env.get_template(template_file)
     return template.render(params)
 
-def main():
-    for interface in CONFIG_DATA['interfaces']:
-        data = cfg_from_template('loopback-template.j2', interface)
-        print(data)
-        result = config(CONNECTION, "post", 'restconf/api/config/interfaces/', data=data)
-        print(result.status_code, result.text)
+for interface in CONFIG_DATA['interfaces']:
+    data = cfg_from_template('loopback-template.j2', interface)
+    print(data)
+    post_result = config(CONNECTION, "post", 'restconf/api/config/interfaces/', data=data)
+    print(post_result.status_code, post_result.text)
 
-if __name__ == '__main__':
-    main()
+get_result = config(CONNECTION, 'get', 'restconf/api/config/interfaces/')
+print(get_result.text)
+
+for interface in CONFIG_DATA['interfaces']:
+    del_result = config(CONNECTION, 'del', 'restconf/api/config/interfaces/interface/Loopback{}'.format(interface['id']))
+    print(del_result.status_code)
+
+get_result = config(CONNECTION, 'get', 'restconf/api/config/interfaces/')
+print(get_result.text)
