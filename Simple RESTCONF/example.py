@@ -99,3 +99,11 @@ converted_json = json.loads(get_result.text)
 interface_list = [interface['name'] for interface in converted_json['ietf-interfaces:interfaces']['interface']]
 print(f'*** Now you have only the following interfaces{interface_list}')
 print(spacer)
+
+# Changing the hostname with PATCH method
+print(spacer)
+print('*** Changing hostname using "restconf/api/config/native" and PATCH method')
+data = {"ned:native": {"hostname": "R12"}}
+print(f'*** Data to be send {data}')
+patch_result = config(CONNECTION, 'patch', 'restconf/api/config/native', data=data)
+print(spacer)
