@@ -1,12 +1,10 @@
-from flask import Flask, url_for, jsonify, request
+import yaml
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventory.db'
 db = SQLAlchemy(app)
-
-class ValidationError(ValueError):
-    pass
 
 class Device(db.Model):
     __tablename__ = 'devices'
@@ -35,31 +33,30 @@ class Device(db.Model):
             raise ValidationError('Invalid device: missing ' + e.args[0])
         return self
 
-@app.route('/devices/', methods=['GET'])
-def get_devices():
-    return jsonify({'devices': [device.get_url()
-                               for device in Device.query.all()]})
+def parse_yaml(file):
+    """ Parses Yaml and returns Python object
+    ARGS:
+        file(str) - filename of YAML
+    RETURNS:
+        inventory - Python object
+    """
+    with open(file) as inventory_yaml:
+        inventory = yaml.load(inventory_yaml, Loader=yaml.FullLoader)
+    return inventory
 
-@app.route('/devices/<int:id>', methods=['GET'])
-def get_device(id):
-    return jsonify(Device.query.get_or_404(id).export_data())
-
-@app.route('/devices/', methods=['POST'])
-def new_device():
-    device = Device()
-    device.import_data(request.json)
-    db.session.add(device)
-    db.session.commit()
-    return jsonify({}), 201, {'Location': device.get_url()}
-
-@app.route('/devices/<int:id>', methods=['PUT'])
-def edit_device(id):
-    device = Device.query.get_or_404(id)
-    device.import_data(request.json)
-    db.session.add(device)
-    db.session.commit()
-    return request.json
+def hosts_to_dict(device, host_data):
+    result = {}
+    result['hostname'] = device
+    result['mgmt_ip'] = host_data['hostname']
+    result['role'] = host_data['data']['type']
+    return result
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(host='0.0.0.0', debug=True)
+    nornir_inventory = parse_yaml('hosts.yaml')
+    for host, data in nornir_inventory.items():
+        device_data = hosts_to_dict(host, data)
+        device = Device()
+        device.import_data(device_data)
+        db.session.add(device)
+        db.session.commit()
