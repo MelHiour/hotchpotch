@@ -1,3 +1,4 @@
+# One time converter of Nornir hosts file to DB
 import yaml
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy

@@ -1,5 +1,37 @@
+# Super simple API based on Mastering Python Networking by Eric Chou
+'''
+It accepts the folowing URLs:
+    /devices/
+        GET     Returns a list of URLs for every Device
+        POST    Accepts a json-encoded body. Returns a URL for newly created device.
+
+                Body {
+                "hostname": "TEST",
+                "mgmt_ip": "192.168.30.50",
+                "role": "router",
+                "vendor": "cisco",
+                "os": "15.4"
+                }
+
+    /devices/<int:id>
+        GET     Returns a json with device information
+        PUT     Accepts a json-encoded body. Modify existing device
+
+    /devices/<int:id>/interfaces
+        GET     Returns a json with all interfaces (using get_interfaces NAPALM getter)
+        POST    Accepts a json-encoded body. Allows to control a OpStatus of interface. Returns a diff just for giggles...
+                Body {
+                "interface": "Ethernet0/3",
+                "state": "down"
+                }
+
+    /devices/<int:id>/sysinfo
+        GET     Returns a system info for particular device (using get_facts NAPALM getter)
+'''
+
 from flask import Flask, url_for, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from network_modules import show_interfaces, show_sys, interface_oper
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventory.db'
@@ -59,6 +91,24 @@ def edit_device(id):
     db.session.add(device)
     db.session.commit()
     return request.json
+
+@app.route('/devices/<int:id>/interfaces', methods=['GET','POST'])
+def interface_interaction(id):
+    device = Device.query.get_or_404(id).export_data()
+    if request.method == 'GET':
+        return show_interfaces(device['mgmt_ip'])
+    elif request.method == 'POST':
+        ip = device['mgmt_ip']
+        config = request.json
+        difference = interface_oper(ip, config['interface'], config['state'])
+        return jsonify({'diff': difference})
+    else:
+        return 405
+
+@app.route('/devices/<int:id>/sysinfo', methods=['GET'])
+def get_sys(id):
+    device = Device.query.get_or_404(id).export_data()
+    return show_sys(device['mgmt_ip'])
 
 if __name__ == '__main__':
     db.create_all()
