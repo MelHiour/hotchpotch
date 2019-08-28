@@ -35,6 +35,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_httpauth import HTTPBasicAuth
 from network_modules import show_interfaces, show_sys, interface_oper
 
+# Initiate Flask app, db and auth
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventory.db'
 db = SQLAlchemy(app)
@@ -43,6 +44,7 @@ auth = HTTPBasicAuth()
 class ValidationError(ValueError):
     pass
 
+# User class with set_password and get_password methods
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -55,6 +57,7 @@ class User(db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+# Device class with get_url, export_data, import_data methods
 class Device(db.Model):
     __tablename__ = 'devices'
     id = db.Column(db.Integer, primary_key=True)
@@ -82,6 +85,7 @@ class Device(db.Model):
             raise ValidationError('Invalid device: missing ' + e.args[0])
         return self
 
+# Start auth decorator
 @auth.verify_password
 def verify_password(username, password):
     user = User.query.filter_by(username=username).first()
