@@ -31,14 +31,29 @@ It accepts the folowing URLs:
 
 from flask import Flask, url_for, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_httpauth import HTTPBasicAuth
 from network_modules import show_interfaces, show_sys, interface_oper
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventory.db'
 db = SQLAlchemy(app)
+auth = HTTPBasicAuth()
 
 class ValidationError(ValueError):
     pass
+
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), index=True)
+    password_hash = db.Column(db.String(128))
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 class Device(db.Model):
     __tablename__ = 'devices'
@@ -66,6 +81,26 @@ class Device(db.Model):
         except KeyError as e:
             raise ValidationError('Invalid device: missing ' + e.args[0])
         return self
+
+@auth.verify_password
+def verify_password(username, password):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        return False
+    return user.verify_password(password)
+
+@app.before_request
+@auth.login_required
+def before_request():
+    pass
+
+# from HTTPAuath extension
+@auth.error_handler
+def unathorized():
+    response = jsonify({'status': 401, 'error': 'unahtorized',
+                        'message': 'please authenticate'})
+    response.status_code = 401
+    return response
 
 @app.route('/devices/', methods=['GET'])
 def get_devices():
