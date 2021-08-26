@@ -19,16 +19,17 @@ def interface_down(host, data):
 	return job
 	
 TRIGGERS = {'Failed password for root':password_failed,
-		    'Failed password for invalid user':password_failed,
-			'state DOWN':interface_down
-			}
+	    'Failed password for invalid user':password_failed,
+	    'state DOWN':interface_down
+	   }
 
 class SyslogTCPHandler(SocketServer.StreamRequestHandler):
 	def handle(self):
+		proxy_data = self.rfile.readline().strip()
 		data = self.rfile.readline().strip()
 		for trigger,handler in TRIGGERS.items():
 			if trigger in data:
-				job = handler(self.client_address[0], str(data))
+				job = handler(proxy_data.split()[2], str(data))
 				print(job)
 				beanstalk = beanstalkc.Connection(host=BHOST, port=BPORT)
 				beanstalk.put(json.dumps(job))
